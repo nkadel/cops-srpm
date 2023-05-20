@@ -1,15 +1,20 @@
+%global betaver rc1
+
+# Not currently working
+%global debug_package %{nil}
+
+
 Summary: COPS security scanner
 Name: cops
-Version: 1.0.4
+Version: 1.0.5
 Release: 0.1%{?dist}
 
-
-Source: http://ftp.twaren.net/BSD/OpenBSD/distfiles/cops.1.04.tar.gz
+Source: http://ftp.twaren.net/BSD/OpenBSD/distfiles/cops-%{version}%{betaver}.tar.gz
 
 BuildRequires: perl-interpreter
 Requires: perl-interpreter
 
-License: GPLv3+
+License: BSD
 
 %description
 COPS security scanner
@@ -32,22 +37,21 @@ BuildRequires: /usr/include/sys/types.h
 
 %prep
 # Because tarball is mislabeled
-%setup -n cops_104
+%setup -n cops-%{version}%{betaver}
 
 %build
-# Does not work
-#make
-
-#%%{make_build}
+make
+make install
 
 #%%check
 
 %install
-# does not work yet
-#make install
+mkdir -p %{buildroot}%{_bindir}
+install -m755 bin/* %{buildroot}%{_bindir}/
 
 %files
 #%%license COPYING
 %doc README.*
+%{_bindir}/*
 
 %changelog
