@@ -1,0 +1,414 @@
+diff -ur cops_104/chk_strings cops-1.0.5rc1/chk_strings
+--- cops_104/chk_strings	1992-03-10 13:56:21.000000000 -0500
++++ cops-1.0.5rc1/chk_strings	2023-05-19 21:58:00.000000000 -0400
+@@ -16,13 +16,13 @@
+ #  For the first two, I simply test the writability; for the last, I
+ # parse it into seperate paths and check each one in turn.
+ #
+-AWK=/bin/awk
++AWK=/bin/gawk
+ SED=/bin/sed
+-EGREP=/usr/bin/egrep
++EGREP=/bin/egrep
+ TEST=/bin/test
+ ECHO=/bin/echo
+-SORT=/usr/bin/sort
+-STRINGS=/usr/ucb/strings
++SORT=/bin/sort
++STRINGS=/bin/strings
+ 
+ if test ! -s $STRINGS
+ 	then
+diff -ur cops_104/cops cops-1.0.5rc1/cops
+--- cops_104/cops	1992-03-10 13:56:31.000000000 -0500
++++ cops-1.0.5rc1/cops	2023-05-19 21:58:00.000000000 -0400
+@@ -77,7 +77,7 @@
+ MAIL=/bin/mail
+ DATE=/bin/date
+ CHMOD=/bin/chmod
+-AWK=/bin/awk
++AWK=/bin/gawk
+ SED=/bin/sed
+ MV=/bin/mv
+ MKDIR=/bin/mkdir
+diff -ur cops_104/crc.chk cops-1.0.5rc1/crc.chk
+--- cops_104/crc.chk	1992-03-10 13:56:34.000000000 -0500
++++ cops-1.0.5rc1/crc.chk	2023-05-19 21:58:00.000000000 -0400
+@@ -7,9 +7,9 @@
+ #
+ 
+ # commands 'n stuff:
+-AWK=/bin/awk
++AWK=/bin/gawk
+ SED=/bin/sed
+-SORT=/usr/bin/sort
++SORT=/bin/sort
+ MV=/bin/mv
+ MAIL=/bin/mail
+ CAT=/bin/cat
+diff -ur cops_104/cron.chk cops-1.0.5rc1/cron.chk
+--- cops_104/cron.chk	1992-03-10 13:56:37.000000000 -0500
++++ cops-1.0.5rc1/cron.chk	2023-05-19 21:58:00.000000000 -0400
+@@ -29,10 +29,10 @@
+ #
+ 
+ #  Location of stuff:
+-AWK=/bin/awk
++AWK=/bin/gawk
+ SED=/bin/sed
+ ECHO=/bin/echo
+-EGREP=/usr/bin/egrep
++EGREP=/bin/egrep
+ TEST=/bin/test
+ CAT=/bin/cat
+ 
+diff -ur cops_104/dev.chk cops-1.0.5rc1/dev.chk
+--- cops_104/dev.chk	1992-03-10 13:56:38.000000000 -0500
++++ cops-1.0.5rc1/dev.chk	2023-05-19 21:58:00.000000000 -0400
+@@ -28,7 +28,7 @@
+ #  I check for the second; comment that code out (lines 83-84), and
+ # uncomment the other style (lines 79-80), if you have the first type.
+ #
+-AWK=/bin/awk
++AWK=/bin/gawk
+ SED=/bin/sed
+ LS=/bin/ls
+ ECHO=/bin/echo
+diff -ur cops_104/docs/makefile cops-1.0.5rc1/docs/makefile
+--- cops_104/docs/makefile	1992-03-10 13:57:18.000000000 -0500
++++ cops-1.0.5rc1/docs/makefile	2023-05-19 21:58:00.000000000 -0400
+@@ -17,14 +17,14 @@
+ #
+ # Where the programs are....
+ #
+-NROFF=/usr/bin/nroff
+-RM=/bin/rm -f
++NROFF=/bin/nroff
++RM=/bin/rm
+ 
+ # make all
+ all:	$(DOCS) $(MAN)
+ 
+ clean:
+-	$(RM) $(DOCS) $(MAN)
++	$(RM) -f $(DOCS) $(MAN)
+ 
+ # 'roff out those docs
+ COPS.report.ms: COPS.report
+diff -ur cops_104/ftp.chk cops-1.0.5rc1/ftp.chk
+--- cops_104/ftp.chk	1992-03-10 13:57:43.000000000 -0500
++++ cops-1.0.5rc1/ftp.chk	2023-05-19 21:58:00.000000000 -0400
+@@ -73,8 +73,8 @@
+ ftpuid=ftp
+ 
+ # Where is everyone?
+-AWK=/bin/awk
+-EGREP=/usr/bin/egrep
++AWK=/bin/gawk
++EGREP=/bin/egrep
+ LS=/bin/ls
+ CMP=/bin/cmp
+ RM=/bin/rm
+Only in cops-1.0.5rc1: .gitignore
+diff -ur cops_104/group.chk cops-1.0.5rc1/group.chk
+--- cops_104/group.chk	1992-03-10 13:57:44.000000000 -0500
++++ cops-1.0.5rc1/group.chk	2023-05-19 21:58:00.000000000 -0400
+@@ -31,12 +31,12 @@
+ # pages entry.  See group(5) for more information.
+ #
+ #
+-AWK=/bin/awk
++AWK=/bin/gawk
+ SED=/bin/sed
+ ECHO=/bin/echo
+ TEST=/bin/test
+-SORT=/usr/bin/sort
+-UNIQ=/usr/bin/uniq
++SORT=/bin/sort
++UNIQ=/bin/uniq
+ YPCAT=/usr/bin/ypcat
+ RM=/bin/rm
+ 
+diff -ur cops_104/is_able.chk cops-1.0.5rc1/is_able.chk
+--- cops_104/is_able.chk	1992-03-10 13:57:46.000000000 -0500
++++ cops-1.0.5rc1/is_able.chk	2023-05-19 21:58:00.000000000 -0400
+@@ -15,7 +15,7 @@
+ #
+ TEST=/bin/test
+ ECHO=/bin/echo
+-AWK=/bin/awk
++AWK=/bin/gawk
+ SED=/bin/sed
+ 
+ config_file=is_able.lst
+diff -ur cops_104/kuang cops-1.0.5rc1/kuang
+--- cops_104/kuang	1992-03-10 13:57:44.000000000 -0500
++++ cops-1.0.5rc1/kuang	2023-05-19 21:58:00.000000000 -0400
+@@ -19,7 +19,7 @@
+ MV=/bin/mv
+ TEST=/bin/test
+ ECHO=/bin/echo
+-AWK=/bin/awk
++AWK=/bin/gawk
+ RM=/bin/rm
+ 
+ # Initialization.
+diff -ur cops_104/makefile cops-1.0.5rc1/makefile
+--- cops_104/makefile	1992-03-10 13:57:49.000000000 -0500
++++ cops-1.0.5rc1/makefile	2023-05-19 22:13:10.000000000 -0400
+@@ -4,10 +4,11 @@
+ #	make all	    -- makes everything
+ #	make install	    -- puts things in their place
+ #	make <program_name> -- make a given program
+-INSTALL_DIR= sun
++#INSTALL_DIR= sun
++INSTALL_DIR= bin
+ 
+-EXECUTABLE = home.chk user.chk pass.chk is_writable crc crc_check \
+-	     addto clearfiles filewriters members tilde is_able
++EXECUTABLE = home.chk user.chk is_writable crc crc_check \
++	     addto clearfiles filewriters members tilde is_able  pass.chk 
+ C_SRC      = home.chk.c user.chk.c is_able.c pass.c is_something.c \
+ 	     addto.c clearfiles.c filewriters.c members.c tilde.c \
+ 	     crc.c crc_check.c
+@@ -26,7 +27,8 @@
+ 
+ #  Certain systems need to uncomment this to compile the pass.chk; Xenix,
+ # some SysV:
+-# BRAINDEADFLAGS = -lcrypt
++# Needed for RHEL8
++BRAINDEADFLAGS = -lcrypt
+ #
+ # systems without rindex need to uncomment this:
+ # CRC_FLAG=-Dstrrchr=rindex
+@@ -66,43 +68,43 @@
+ 
+ # make the programs
+ addto: src/addto.c
+-	$(CC) $(CFLAGS) -o addto src/addto.c
++	$(CC) $(CFLAGS) -o $@ $?
+ 
+ clearfiles: src/clearfiles.c
+-	$(CC) $(CFLAGS) -o clearfiles src/clearfiles.c
++	$(CC) $(CFLAGS) -o $@ $?
+ 
+ filewriters: src/filewriters.c
+-	$(CC) $(CFLAGS) -o filewriters src/filewriters.c
++	$(CC) $(CFLAGS) -o $@ $?
+ 
+ members: src/members.c
+-	$(CC) $(CFLAGS) -o members src/members.c
++	$(CC) $(CFLAGS) -o $@ $?
+ 
+ home.chk: src/home.chk.c
+-	$(CC) $(CFLAGS) -o home.chk src/home.chk.c
++	$(CC) $(CFLAGS) -o $@ $?
+ 
+ user.chk: src/user.chk.c
+-	$(CC) $(CFLAGS) -o user.chk src/user.chk.c
++	$(CC) $(CFLAGS) -o $@ $?
+ 
+ is_able: src/is_able.c
+-	$(CC) $(CFLAGS) -o is_able src/is_able.c
++	$(CC) $(CFLAGS) -o $@ $?
+ 
+ is_writable: src/is_something.c
+-	$(CC) $(CFLAGS) -DWRITABLE -o is_writable src/is_something.c
++	$(CC) $(CFLAGS) -DWRITABLE -o $@ $?
+ 
+ #   If fast crypt will work, comment the first CC line, uncomment
+ # the next two:
+ pass.chk: src/pass.c
+-	$(CC) $(CFLAGS) -o pass.chk src/pass.c $(BRAINDEADFLAGS)
+-# 	$(CC) $(CFLAGS) -Dcrypt=fcrypt -DFCRYPT -o pass.chk src/pass.c \
++	$(CC) $(CFLAGS) $(BRAINDEADFLAGS) -o $@ $?
++# 	$(CC) $(CFLAGS) -Dcrypt=fcrypt -DFCRYPT -o $@ \
+ # 	src/crack-fcrypt.c src/crack-lib.c $(BRAINDEADFLAGS)
+ 
+ tilde: src/tilde.c
+-	$(CC) $(CFLAGS) -o tilde src/tilde.c
++	$(CC) $(CFLAGS) -o $@ $?
+ 
+ crc: src/crc.c
+-	$(CC) $(CFLAGS) -o crc src/crc.c $(SEQFLAGS)
++	$(CC) $(CFLAGS) -o $@ $(SEQFLAGS) $?
+ 
+ crc_check: src/crc_check.c
+-	$(CC) $(CFLAGS) $(CRC_FLAG) -o crc_check src/crc_check.c $(SEQFLAGS)
++	$(CC) $(CFLAGS) $(CRC_FLAG) -o $@$(SEQFLAGS) $?
+ 
+ # the end
+diff -ur cops_104/misc.chk cops-1.0.5rc1/misc.chk
+--- cops_104/misc.chk	1992-03-10 13:57:50.000000000 -0500
++++ cops-1.0.5rc1/misc.chk	2023-05-19 21:58:00.000000000 -0400
+@@ -24,7 +24,7 @@
+ GREP=/bin/grep
+ ECHO=/bin/echo
+ TEST=/bin/test
+-AWK=/bin/awk
++AWK=/bin/gawk
+ SED=/bin/sed
+ RM=/bin/rm
+ UUDECODE=/usr/bin/uudecode
+diff -ur cops_104/pass_diff.chk cops-1.0.5rc1/pass_diff.chk
+--- cops_104/pass_diff.chk	1992-03-10 13:57:52.000000000 -0500
++++ cops-1.0.5rc1/pass_diff.chk	2023-05-19 21:58:00.000000000 -0400
+@@ -35,7 +35,7 @@
+ # Locations of commands
+ DIFF=/bin/diff
+ CMP=/bin/cmp
+-AWK=/bin/awk
++AWK=/bin/gawk
+ TEST=/bin/test
+ CP=/bin/cp
+ MV=/bin/mv
+diff -ur cops_104/passwd.chk cops-1.0.5rc1/passwd.chk
+--- cops_104/passwd.chk	1992-03-10 13:56:19.000000000 -0500
++++ cops-1.0.5rc1/passwd.chk	2023-05-19 21:58:00.000000000 -0400
+@@ -32,11 +32,11 @@
+ #   If a line begins with a plus sign (+), it is a yellow pages entry.
+ # See passwd(5) for more information, if this applies to your site.
+ #
+-AWK=/bin/awk
++AWK=/bin/gawk
+ TEST=/bin/test
+ ECHO=/bin/echo
+-SORT=/usr/bin/sort
+-UNIQ=/usr/bin/uniq
++SORT=/bin/sort
++UNIQ=/bin/uniq
+ RM=/bin/rm
+ YPCAT=/usr/bin/ypcat
+ 
+diff -ur cops_104/rc.chk cops-1.0.5rc1/rc.chk
+--- cops_104/rc.chk	1992-03-10 13:57:56.000000000 -0500
++++ cops-1.0.5rc1/rc.chk	2023-05-19 21:58:00.000000000 -0400
+@@ -26,12 +26,12 @@
+ SED=/bin/sed
+ CAT=/bin/cat
+ RM=/bin/rm
+-AWK=/bin/awk
++AWK=/bin/gawk
+ LS=/bin/ls
+ TEST=/bin/test
+-EGREP=/usr/bin/egrep
++EGREP=/bin/egrep
+ ECHO=/bin/echo
+-SORT=/usr/bin/sort
++SORT=/bin/sort
+ FIND=/bin/find
+ 
+ # temp file for stuff:
+diff -ur cops_104/reconfig cops-1.0.5rc1/reconfig
+--- cops_104/reconfig	1992-03-10 13:58:01.000000000 -0500
++++ cops-1.0.5rc1/reconfig	2023-05-19 19:18:35.000000000 -0400
+@@ -205,5 +205,5 @@
+ 	$MV $i.new $i
+ 	# finally, make sure everything is back to executable status
+ 	$CHMOD u+x $i
+-
+ done
++chmod a-x docs/makefile
+diff -ur cops_104/res_diff cops-1.0.5rc1/res_diff
+--- cops_104/res_diff	1992-03-10 13:58:02.000000000 -0500
++++ cops-1.0.5rc1/res_diff	2023-05-19 21:58:00.000000000 -0400
+@@ -16,7 +16,7 @@
+ # 
+ DIFF=/bin/diff
+ TEST=/bin/test
+-AWK=/bin/awk
++AWK=/bin/gawk
+ LS=/bin/ls
+ RM=/bin/rm
+ ECHO=/bin/echo
+diff -ur cops_104/root.chk cops-1.0.5rc1/root.chk
+--- cops_104/root.chk	1992-03-10 13:58:03.000000000 -0500
++++ cops-1.0.5rc1/root.chk	2023-05-19 21:58:00.000000000 -0400
+@@ -29,12 +29,12 @@
+ # on a line by awking it.
+ #
+ #
+-AWK=/bin/awk
++AWK=/bin/gawk
+ SED=/bin/sed
+ TEST=/bin/test
+ ECHO=/bin/echo
+ GREP=/bin/grep
+-SORT=/usr/bin/sort
++SORT=/bin/sort
+ EXPR=/bin/expr
+ LS=/bin/ls
+ 
+diff -ur cops_104/src/pass.c cops-1.0.5rc1/src/pass.c
+--- cops_104/src/pass.c	1992-03-10 13:58:13.000000000 -0500
++++ cops-1.0.5rc1/src/pass.c	2023-05-19 22:09:36.000000000 -0400
+@@ -2,12 +2,16 @@
+ #include <pwd.h>
+ #include <ctype.h>
+ 
++/* Added for RHEL 8 */
++#include <crypt.h>
++#include <string.h>
++
+ /* C2 stuff by Ole H. Nielsen */
+ #ifdef C2
+ #include <sys/label.h>
+ #include <sys/audit.h>
+ #include <pwdadj.h>
+-#endif C2
++#endif
+ 
+ /* number of words the dictionary can suck up */
+ #define ARB_CONST	32000
+@@ -282,7 +286,7 @@
+ #ifdef C2
+     struct passwd_adjunct *pwdadj;
+     struct passwd_adjunct *getpwanam();
+-#endif C2
++#endif
+     register char	*cp, *cp2;
+     struct passwd	*pwd;
+     struct passwd	*getpwent();
+@@ -362,7 +366,7 @@
+ 			/* Substitute the C2 secure password */
+ 			pwd->pw_passwd = pwdadj->pwa_passwd;
+ 	}
+-#endif C2
++#endif
+ 
+ 	if (*pwd->pw_passwd == '\0') {
+ 	    if (chknulls) {
+@@ -722,7 +726,9 @@
+  * NULL if not found
+  */
+ 
++#ifndef NULL
+ #define	NULL	0
++#endif
+ 
+ char *
+ my_index(sp, c)
+diff -ur cops_104/suid.chk cops-1.0.5rc1/suid.chk
+--- cops_104/suid.chk	1992-03-10 13:58:20.000000000 -0500
++++ cops-1.0.5rc1/suid.chk	2023-05-19 21:58:00.000000000 -0400
+@@ -54,15 +54,15 @@
+ CP=/bin/cp
+ MAIL=/bin/mail
+ CHMOD=/bin/chmod
+-SORT=/usr/bin/sort
+-COMM=/usr/bin/comm
+-FIND=/usr/bin/find
++SORT=/bin/sort
++COMM=/bin/comm
++FIND=/bin/find
+ RM=/bin/rm
+ MV=/bin/mv
+-AWK=/bin/awk
++AWK=/bin/gawk
+ SED=/bin/sed
+ GREP=/bin/grep
+-EGREP=/usr/bin/egrep
++EGREP=/bin/egrep
+ YPCAT=/usr/bin/ypcat
+ DATE=/bin/date
+ NONFS=false
