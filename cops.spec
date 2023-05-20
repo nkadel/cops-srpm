@@ -1,15 +1,19 @@
-%global betaver rc1
+# Useful for upstrem git repos with tags
+%global betaver %{nil}
+#%%global betaver rc1
 
 # Not currently working
 %global debug_package %{nil}
 
 
-Summary: COPS security scanner
+Summary: Computer Oracle and Password System
 Name: cops
-Version: 1.0.5
+Version: 1.0.4
 Release: 0.1%{?dist}
 
-Source: http://ftp.twaren.net/BSD/OpenBSD/distfiles/cops-%{version}%{betaver}.tar.gz
+# Old, locked source, switch to git repo ASAP
+Source: http://ftp.twaren.net/BSD/OpenBSD/distfiles/cops.1.04.tar.gz
+Patch1: cops_104.rhel8.patches
 
 BuildRequires: perl-interpreter
 Requires: perl-interpreter
@@ -17,7 +21,13 @@ Requires: perl-interpreter
 License: BSD
 
 %description
-COPS security scanner
+The package, which will henceforth be referred to as COPS (Computer
+Oracle and Password System), can be broken down into three key parts.
+The first is the actual set of programs that attempt to automate
+security checks that are often performed manually (or perhaps with self-
+written short shell scripts or programs) by a systems administrator.
+The second part is the documentation, which details how to set up,
+operate, and interpret the results of the programs. 
 
 BuildRequires: gcc
 BuildRequires: perl-interpreter
@@ -37,7 +47,7 @@ BuildRequires: /usr/include/sys/types.h
 
 %prep
 # Because tarball is mislabeled
-%setup -n cops-%{version}%{betaver}
+%autosetup  -n cops_104 -p1
 
 %build
 make
