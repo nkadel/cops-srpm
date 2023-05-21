@@ -14,7 +14,7 @@ RSYNCSAFEOPTS=$(RSYNCOPTS) --ignore-existing
 MOCKS+=fedora-38-x86_64
 MOCKS+=centos-stream-9-x86_64
 MOCKS+=centos-stream-8-x86_64
-MOCKS+=centos+epel-7-x86_64
+#MOCKS+=centos+epel-7-x86_64
 # Modern rsync uses sytemd rather than SysV init
 #MOCKS+=epel-6-x86_64
 
@@ -54,15 +54,15 @@ fastbuild:: src.rpm
 		--rebuild $?
 
 .PHONY: $(MOCKS)
-$(MOCKS):: src.rpm
-	@if [ -e $@ -a -n "`find $@ -name \*.rpm 2>/dev/null`" ]; then \
+$(MOCKS)::
+	@if [ -e $@ -a -n "`find $@ -name \*.rpm ! -name '*.src.rpm' 2>/dev/null`" ]; then \
 		echo "	Skipping RPM populated $@"; \
 	else \
 		echo "Actally building $? in $@"; \
 		rm -rf $@; \
 		mock -q -r /etc/mock/$@.cfg \
-		     --resultdir=$(PWD)/$@ \
-		     $?; \
+		    --sources $(PWD) --spec $(SPEC) \
+		    --resultdir=$(PWD)/$@; \
 	fi
 
 mock:: $(MOCKS)

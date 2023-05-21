@@ -13,8 +13,10 @@ Release: 0.1%{?dist}
 
 # Old, locked source, switch to git repo ASAP
 Source: http://ftp.twaren.net/BSD/OpenBSD/distfiles/cops.1.04.tar.gz
-Patch1: cops_104.rhel8.patches
+Patch1: cops_104.rhel8.patch
 
+BuildRequires: gcc
+BuildRequires: make
 BuildRequires: perl-interpreter
 Requires: perl-interpreter
 
@@ -50,6 +52,7 @@ BuildRequires: /usr/include/sys/types.h
 %autosetup  -n cops_104 -p1
 
 %build
+./reconfig
 make
 make install
 
@@ -65,3 +68,5 @@ install -m755 bin/* %{buildroot}%{_bindir}/
 %{_bindir}/*
 
 %changelog
+* Sat May 20 2023 Nico Kadel-Garcia - 1.0.4-0.1
+- Set up initial SRPM
