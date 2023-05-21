@@ -1,9 +1,11 @@
-copsrepo
-==========-
+cops-srpm
+=========
 
-Wrapper for SRPM building tools for copos_104. COPS is quite old security auditing sofware written by Dan Farmer: 
+Wrapper for SRPM building tools for copos_104. COPS is quite old
+security auditing sofware written by Dan Farmer. The last updates were
+in 2012, but some folks still use it.
 
-Building ansible
+Building COPS
 ===============
 
 Ideally, install "mock" and use that to build for both RHEL and up,
